@@ -33,7 +33,7 @@ df["Rendimiento academico"].head(5)
 bins=[0,2,4,6,8,10,12]
 labels=["0-2","2-4","4-6","6-8","8-10","10-12"] 
 
-df['Horas_intervalo'] = pd.cut(df['Promedio diario de uso de pantalla'], bins=bins, labels=labels, right=False)
+df['Horas_intervalo'] = pd.cut(df['Horas promedio en redes sociales'], bins=bins, labels=labels, right=False)
 
 #verificacion de que se haya hecho correctamente la columna de intervalos
 df["Horas_intervalo"].head()
@@ -44,7 +44,7 @@ frecuencia_rel=(frecuencia_abs/len(df))*100
 
 frecuencia_acum=frecuencia_abs.cumsum()
 
-frecuencia_acum_rel=frecuencia_rel.cumsum
+frecuencia_acum_rel=frecuencia_rel.cumsum()
 
 #Tabla de frecuencias
 tabla_frecuencia=pd.DataFrame({"Frecuencia absoluta":frecuencia_abs,
@@ -56,23 +56,23 @@ print(tabla_frecuencia)
 
 
 # Estadistica descrictiva
-media=df["Promedio diario de uso de pantalla"].mean()
+media=df["Horas promedio en redes sociales"].mean()
 print("media:",media)
-mediana=df["Promedio diario de uso de pantalla"].median()
+mediana=df["Horas promedio en redes sociales"].median()
 print("mediana:",mediana)
-moda=df["Promedio diario de uso de pantalla"].mode()[0]
+moda=df["Horas promedio en redes sociales"].mode()[0]
 print("moda:",moda)
-varianza=df["Promedio diario de uso de pantalla"].var()
+varianza=df["Horas promedio en redes sociales"].var()
 print("varianza:",varianza)
-desviacion_estandar=df["Promedio diario de uso de pantalla"].std()
+desviacion_estandar=df["Horas promedio en redes sociales"].std()
 print("desviación estándar:",desviacion_estandar)
-rango=df["Promedio diario de uso de pantalla"].max()-df["Promedio diario de uso de pantalla"].min()
+rango=df["Horas promedio en redes sociales"].max()-df["Horas promedio en redes sociales"].min()
 print("rango:",rango)
 
 #Hallando los valores de Q1 y Q3 para calcular el rango intercuartilico
-Q1=df["Promedio diario de uso de pantalla"].quantile(0.25)
+Q1=df["Horas promedio en redes sociales"].quantile(0.25)
 print("Q1:",Q1)
-Q3=df["Promedio diario de uso de pantalla"].quantile(0.75)
+Q3=df["Horas promedio en redes sociales"].quantile(0.75)
 print("Q3:",Q3)
 IQR=Q3-Q1  
 print("IQR:",IQR)
@@ -91,7 +91,7 @@ print(f"la distribucion presenta un sesgo:{sesgo}")
 print("la media y mediana indican que los datos estan distribuidos de manera desigual")
 print("la desviacion estandar muestra que los datos se alejan de la media en promedio 2,042 unidades")
 print(f"los datos se encuentran en un rango de {rango} unidades")
-print(f"El {frecuencia_rel.max():.1f}% de los estudiantes se encuentra en el intervalo {tabla_frecuencia["Frecuencia relativa"].idxmax()} horas.")
+print(f"El {frecuencia_rel.max():.1f}% de los estudiantes se encuentra en el intervalo {tabla_frecuencia['Frecuencia relativa'].idxmax()} horas.")
 print(f"El {frecuencia_acum_rel.iloc[-1]:.1f}% de los estudiantes usa entre 0 y 12 horas de redes sociales.")
 
 # Compararacion de la medida pertinente
@@ -109,7 +109,7 @@ print(media_redes_sociales)
 
 #diferencias entre ambas medias
 
-diferencia={abs(media_redes_sociales-media_aritmetica)}
+diferencia=abs(media_redes_sociales-media_aritmetica)
 print(diferencia)
 
 print(f"la diferencia que hay entre las medias es de {diferencia} esto quieres decir que en la base de datos de mi compañero pasa,en \n promedio {diferencia}  mas en redes sociales que los estudiantes de mi muestra")
@@ -195,3 +195,4 @@ plt.text(0.95, 0.95,
         verticalalignment='top',
         horizontalalignment='right',
         bbox=dict(boxstyle="round,pad=0.5", facecolor="white", edgecolor="gray", alpha=0.9))
+
