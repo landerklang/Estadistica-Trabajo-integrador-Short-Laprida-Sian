@@ -196,3 +196,5 @@ plt.text(0.95, 0.95,
         horizontalalignment='right',
         bbox=dict(boxstyle="round,pad=0.5", facecolor="white", edgecolor="gray", alpha=0.9))
 
+
+plt.show()
