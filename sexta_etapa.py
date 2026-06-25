@@ -56,6 +56,7 @@ print(tabla_frecuencia)
 
 
 # Estadistica descrictiva
+print("\n-Estadistica descritiva-")
 media=df["Horas promedio en redes sociales"].mean()
 print("media:",media)
 mediana=df["Horas promedio en redes sociales"].median()
@@ -70,6 +71,7 @@ rango=df["Horas promedio en redes sociales"].max()-df["Horas promedio en redes s
 print("rango:",rango)
 
 #Hallando los valores de Q1 y Q3 para calcular el rango intercuartilico
+print("\n-valores de q1,q3 y valor intercuartilico-")
 Q1=df["Horas promedio en redes sociales"].quantile(0.25)
 print("Q1:",Q1)
 Q3=df["Horas promedio en redes sociales"].quantile(0.75)
@@ -77,6 +79,7 @@ print("Q3:",Q3)
 IQR=Q3-Q1  
 print("IQR:",IQR)
 #Determinar el sesgo de la distribucion
+print("\n-Valor del sesgo-")
 if media>mediana:
     sesgo="positivo"
 elif media<mediana:
@@ -86,6 +89,7 @@ else:
 
 print(sesgo)
 #Interpretación de los resultados
+print("\n-Interpretación de los resultados-")
 
 print(f"la distribucion presenta un sesgo:{sesgo}")
 print("la media y mediana indican que los datos estan distribuidos de manera desigual")
@@ -95,27 +99,30 @@ print(f"El {frecuencia_rel.max():.1f}% de los estudiantes se encuentra en el int
 print(f"El {frecuencia_acum_rel.iloc[-1]:.1f}% de los estudiantes usa entre 0 y 12 horas de redes sociales.")
 
 # Compararacion de la medida pertinente
+print("\n-Comparacion de las media pertinente-")
 
 ## para la comparacion decidi seleccionar la media aritmetica 
 
 #media aritmetica obtenida del excel del compañero de trabajo
-media_aritmetica=6.8886
+media_aritmetica=3,5
+print(f"media del excel {media_aritmetica}")
 
 #media de las horas promedio de las redes sociales
 media_redes_sociales=df["Horas promedio en redes sociales"].mean()
-print(media_aritmetica)
+print(f"Media_redes_sociales :{media_redes_sociales}")
 
-print(media_redes_sociales)
 
 #diferencias entre ambas medias
 
 diferencia=abs(media_redes_sociales-media_aritmetica)
+print("\n-Diferencias entre ambas media-")
 print(diferencia)
 
 print(f"la diferencia que hay entre las medias es de {diferencia} esto quieres decir que en la base de datos de mi compañero pasa,en \n promedio {diferencia}  mas en redes sociales que los estudiantes de mi muestra")
 
 # Regresion lineal Y correlacion
 #Definiendo la variable independiente y dependiente
+print("\n-Regresion lineal Y correlacion-")
 horas_promedio_redes=df["Horas promedio en redes sociales"]
 print("Variable independiente:",horas_promedio_redes)
 rendimiento_academico=df["Rendimiento academico"]
@@ -140,6 +147,7 @@ print("Suma X^2:", x2Sum)
 y2Sum=df_2["y^2"].sum()
 print("Suma Y^2:", y2Sum)
 n=len(df_2)
+print(f"numero de fila:{n}")
 # Recta de regresion
 # Calculo de coeficientes de regresion lineal
 b=((n * xySum) - (xSum * ySum)) / ((n * x2Sum) - (xSum ** 2))
